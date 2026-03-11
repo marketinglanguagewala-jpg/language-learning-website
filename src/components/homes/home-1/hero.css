@@ -1,0 +1,113 @@
+/* ===== Main Languages Section With Top & Bottom Lines ===== */
+.languages-section {
+  margin-top: 50px;
+  padding: 40px 0 30px 0;
+  position: relative;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+
+  /* underline default position */
+  --hover-x: -200px;
+}
+
+/* === Active Moving Bold Underline (Top Center of Section) === */
+.languages-section::after {
+  content: "";
+  position: absolute;
+  top: 0;                   /* Just below top border */
+  height: 2px;              /* Bold underline */
+  width: 80px;              /* Length of underline */
+  background: #20264d;
+  border-radius: 3px;
+  left: 0;
+  transform: translateX(var(--hover-x));
+  transition: transform 0.25s ease;
+}
+
+/* ===== Swiper Slide ===== */
+.slider-language .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== Each Item Box ===== */
+.lang-box {
+  width: 140px;
+  padding: 20px 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* ===== Flag Hover Item ===== */
+.hover-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Circle Flag */
+.lang-flag {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.lang-box:hover .lang-flag {
+  transform: scale(1.08);
+  box-shadow: 0 8px 22px rgba(59, 74, 254, 0.12);
+}
+
+/* Text */
+.hover-flag h6 {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #20264d;
+  transition: 0.2s ease;
+}
+
+.lang-box:hover h6 {
+  font-weight: 700;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .lang-box { width: 110px; }
+  .lang-flag { width: 48px; height: 48px; }
+}
+/* ===== MOBILE FIX: Force Swiper to behave properly ===== */
+@media (max-width: 768px) {
+
+  /* Prevent entire page from going too wide */
+  .languages-section,
+  .slider-language {
+    overflow: hidden !important;
+  }
+
+  /* Ensures swiper wrapper does NOT expand beyond screen */
+  .slider-language .swiper-wrapper {
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  /* The MOST IMPORTANT fix */
+  .slider-language .swiper-slide {
+    flex-shrink: 0 !important;
+    width: auto !important;
+  }
+
+  /* Reduce box size for small screens */
+  .lang-box {
+    width: 100px !important;
+  }
+
+  .lang-flag {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .hover-flag h6 {
+    font-size: 13px;
+  }
+}
