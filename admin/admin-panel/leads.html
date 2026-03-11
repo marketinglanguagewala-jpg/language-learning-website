@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links Of CSS File -->
+    <link rel="stylesheet" href="assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="assets/css/simplebar.css">
+    <link rel="stylesheet" href="assets/css/prism.css">
+    <link rel="stylesheet" href="assets/css/quill.snow.css">
+    <link rel="stylesheet" href="assets/css/remixicon.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/jsvectormap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Title -->
+    <title>Langauagewala Admin Dashboard</title>
+    <style>
+        .pagination .page-item .page-link {
+            border: 1px solid #d0d5dd;
+            color: #344054;
+            background: #ffffff;
+            padding: 6px 12px;
+        }
+        
+        .pagination .page-item.active .page-link {
+            background-color: #0d6efd;   /* dark blue */
+            color: #ffffff;
+            border-color: #0d6efd;
+            font-weight: 600;
+        }
+        
+        .pagination .page-item .page-link:hover {
+            background-color: #e7f1ff;
+        }
+        
+        /* Header row */
+.leads-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* Title */
+.leads-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+/* Controls wrapper */
+.leads-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Inputs & select */
+.leads-controls input,
+.leads-controls select {
+    height: 36px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    padding: 0 10px;
+    transition: all 0.2s ease;
+}
+
+/* Focus effect */
+.leads-controls input:focus,
+.leads-controls select:focus {
+    background: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+/* CSV button */
+.csv-btn {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+}
+
+/* Hover */
+/*.csv-btn:hover {*/
+/*    background: linear-gradient(135deg, #16a34a, #15803d);*/
+/*}*/
+
+/* Mobile */
+@media (max-width: 768px) {
+    .leads-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .leads-controls {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .leads-controls input,
+    .leads-controls select,
+    .csv-btn {
+        width: 100%;
+    }
+}
+/* 🔥 FIX: dropdown arrow overlap issue */
+.leads-controls select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: none !important;
+    padding-right: 12px;
+}
+
+/* IE / Edge legacy fix */
+.leads-controls select::-ms-expand {
+    display: none;
+}
+
+
+    </style>
+</head>
+
+<body class="bg-body-bg">
+
+    <!-- Start Preloader Area -->
+    <div class="preloader" id="preloader">
+        <div class="preloader">
+            <div class="waviy position-relative">
+                <span class="d-inline-block">L</span>
+                <span class="d-inline-block">A</span>
+                <span class="d-inline-block">N</span>
+                <span class="d-inline-block">G</span>
+                <span class="d-inline-block">A</span>
+                <span class="d-inline-block">U</span>
+                <span class="d-inline-block">G</span>
+                <span class="d-inline-block">E</span>
+                <span class="d-inline-block">W</span>
+                <span class="d-inline-block">A</span>
+                <span class="d-inline-block">L</span>
+                <span class="d-inline-block">A</span>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+
+    <!-- Start Sidebar Area -->
+    <div class="sidebar-area" id="sidebar-area">
+        <div class="logo position-relative d-flex align-items-center justify-content-between">
+            <a href="index.html" class="d-block text-decoration-none position-relative">
+                <img src="assets/images/logo-icon.png" alt="logo-icon">
+                
+            </a>
+            <button
+                class="sidebar-burger-menu-close bg-transparent py-3 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y"
+                id="sidebar-burger-menu-close">
+                <span class="border-1 d-block for-dark-burger"
+                    style="border-bottom: 1px solid #475569; height: 1px; width: 25px; transform: rotate(45deg);"></span>
+                <span class="border-1 d-block for-dark-burger"
+                    style="border-bottom: 1px solid #475569; height: 1px; width: 25px; transform: rotate(-45deg);"></span>
+            </button>
+            <button class="sidebar-burger-menu bg-transparent p-0 border-0" id="sidebar-burger-menu">
+                <span class="border-1 d-block for-dark-burger"
+                    style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                <span class="border-1 d-block for-dark-burger"
+                    style="border-bottom: 1px solid #475569; height: 1px; width: 25px; margin: 6px 0;"></span>
+                <span class="border-1 d-block for-dark-burger"
+                    style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+            </button>
+        </div>
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu active" data-simplebar>
+            <ul class="menu-inner">
+                
+                <li class="menu-item open" id="usersMenu">
+                    <a href="index.html" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">group</span>
+                        <span class="title">Users</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item open">
+                    <a href="leads.html" class="menu-link active">
+                        <span class="material-symbols-outlined menu-icon">group</span>
+                        <span class="title">Leads</span>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle active">
+                        <span class="material-symbols-outlined menu-icon">auto_stories</span>
+                        <span class="title">Courses</span>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="courses.html" class="menu-link">
+                                Courses List
+                            </a>
+                        </li>
+                        
+                        <li class="menu-item">
+                            <a href="create-course.html" class="menu-link">
+                                Create Course
+                            </a>
+                        </li>
+                        <!--<li class="menu-item">-->
+                        <!--    <a href="edit-course.html" class="menu-link">-->
+                        <!--        Edit Course-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        
+                    </ul>
+                </li>
+                <li class="menu-item open">
+                    <a href="add-instructor.html" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">group</span>
+                        <span class="title">Add Instructor</span>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="my-profile.html" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">account_circle</span>
+                        <span class="title">My Profile</span>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="logout.html" class="menu-link">
+                        <span class="material-symbols-outlined menu-icon">logout</span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </div>
+    <!-- End Sidebar Area -->
+
+    <!-- Start Main Content Area -->
+    <div class="container-fluid">
+        <div class="main-content d-flex flex-column">
+            <!-- Start Header Area -->
+            <header class="header-area bg-white mb-4 rounded-10 border border-white" id="header-area">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="left-header-content">
+                            <ul
+                                class="d-flex align-items-center ps-0 mb-0 list-unstyled justify-content-center justify-content-md-start">
+                                <li class="d-xl-none">
+                                    <button
+                                        class="header-burger-menu bg-transparent p-0 border-0 position-relative top-3"
+                                        id="header-burger-menu">
+                                        <span class="border-1 d-block for-dark-burger"
+                                            style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                                        <span class="border-1 d-block for-dark-burger"
+                                            style="border-bottom: 1px solid #475569; height: 1px; width: 25px; margin: 6px 0;"></span>
+                                        <span class="border-1 d-block for-dark-burger"
+                                            style="border-bottom: 1px solid #475569; height: 1px; width: 25px;"></span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <form class="src-form position-relative">
+                                        <input type="text" class="form-control" placeholder="Search here...">
+                                        <div
+                                            class="src-btn position-absolute top-50 start-0 translate-middle-y bg-transparent p-0 border-0">
+                                            <span class="material-symbols-outlined">search</span>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="right-header-content mt-3 mt-md-0">
+                            <ul
+                                class="d-flex align-items-center justify-content-center justify-content-md-end ps-0 mb-0 list-unstyled">
+                                
+                                <li class="header-right-item light-dark-item">
+                                    <div class="light-dark">
+                                        <button class="switch-toggle dark-btn p-0 bg-transparent lh-0 border-0"
+                                            id="switch-toggle">
+                                            <span class="dark"><i class="material-symbols-outlined">dark_mode</i></span>
+                                            <span class="light"><i
+                                                    class="material-symbols-outlined">light_mode</i></span>
+                                        </button>
+                                    </div>
+                                </li>
+                                
+                                <li class="header-right-item">
+                                    <div class="dropdown admin-profile">
+                                        <div class="d-xxl-flex align-items-center bg-transparent border-0 text-start p-0 cursor dropdown-toggle"
+                                            data-bs-toggle="dropdown">
+                                            <div class="flex-shrink-0 position-relative">
+                                                <img class="rounded-circle admin-img-width-for-mobile"
+                                                    style="width: 40px; height: 40px;" src="assets/images/admin.png"
+                                                    alt="admin">
+                                                <span
+                                                    class="d-block bg-success-60 border border-2 border-white rounded-circle position-absolute end-0 bottom-0"
+                                                    style="width: 11px; height: 11px;"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown-menu border-0 bg-white dropdown-menu-end">
+                                            <div class="d-flex align-items-center info">
+                                                <div class="flex-shrink-0">
+                                                    <img class="rounded-circle admin-img-width-for-mobile"
+                                                        style="width: 40px; height: 40px;" src="assets/images/admin.png"
+                                                        alt="admin">
+                                                </div>
+                                                <div class="flex-grow-1 ms-10">
+                                                    <h3 class="fw-medium fs-17 mb-0" id="profileName">Loading...</h3>
+                                                    <span class="fs-15 fw-medium" id="profileRole">Loading...</span>
+                                                </div>
+                                            </div>
+                                            <ul class="admin-link mb-0 list-unstyled">
+                                                <li>
+                                                    <a class="dropdown-item admin-item-link d-flex align-items-center text-body active"
+                                                        href="my-profile.html">
+                                                        <i class="material-symbols-outlined">person</i>
+                                                        <span class="ms-2">My Profile</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <a class="dropdown-item admin-item-link d-flex align-items-center text-body"
+                                                        href="logout.html">
+                                                        <i class="material-symbols-outlined">logout</i>
+                                                        <span class="ms-2">Logout</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- End Header Area -->
+
+            <div class="main-content-container overflow-hidden">
+                <div class="row">
+                    <div class="col-xxl-6 col-xxxl-12">
+                        
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    
+                </div>
+                <div class="row">
+                    
+                </div>
+                <div class="card bg-white rounded-10 border border-white mb-4">
+                    <!--<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 p-20">-->
+                    <!--    <h3>Total Leads</h3>-->
+
+                    <!--    <ul class="nav nav-tabs border-0 gap-2 tabs-default-active" id="myTab" role="tablist">-->
+                    <!--        <li class="nav-item" role="presentation">-->
+                    <!--            <button class="nav-link border-border-color-50 bg-transparent active"-->
+                    <!--                id="all-courses-tab" data-bs-toggle="tab" data-bs-target="#all-courses-tab-pane"-->
+                    <!--                type="button" role="tab" aria-controls="all-courses-tab-pane" aria-selected="true"-->
+                    <!--                style="padding: 3.5px 12px; border-radius: 2px;">-->
+                    <!--                <span class="d-flex align-items-center gap-1 fs-14 text-secondary">-->
+                                        
+                    <!--                    Leads-->
+                    <!--                </span>-->
+                    <!--            </button>-->
+                    <!--        </li>-->
+                    <!--        <li class="nav-item" role="presentation">-->
+                    <!--            <a class="nav-link border-border-color-50"-->
+                    <!--            href="https://admin.languagewala.in/admin-panel/courses.html"-->
+                    <!--            style="padding: 3.5px 12px; border-radius: 2px;">-->
+                    <!--                <span class="d-flex align-items-center gap-1 fs-14 text-secondary">-->
+                    <!--                    <span class="material-symbols-outlined menu-icon">auto_stories</span>-->
+                    <!--                    Courses-->
+                    <!--                </span>-->
+                    <!--            </a>-->
+                    <!--        </li>-->
+
+                            
+                    <!--    </ul>-->
+                    <!--</div>-->
+<div class="leads-header-row p-20">
+    <h3 class="leads-title">Leads</h3>
+
+    <div class="leads-controls">
+        <input type="date" id="fromDate" class="form-control form-control-sm">
+        <input type="date" id="toDate" class="form-control form-control-sm">
+
+        <select id="rowLimit" class="form-select form-select-sm">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+            <option value="all">All</option>
+        </select>
+
+        <button class="btn btn-success btn-sm csv-btn" onclick="downloadCSV()">
+            Download
+        </button>
+    </div>
+</div>
+
+
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="all-courses-tab-pane" role="tabpanel"
+                            aria-labelledby="all-courses-tab" tabindex="0">
+                            <div class="default-table-area mx-minus-1 table-courses">
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fw-medium">ID</th>
+                                                <th scope="col" class="fw-medium">Name</th>
+                                                <th scope="col" class="fw-medium">Email</th>
+                                                <th scope="col" class="fw-medium">Phone</th>
+                                                <th scope="col" class="fw-medium">Course</th>
+                                                <th scope="col" class="fw-medium" style="text-align: center;">Institute</th>
+                                                <th scope="col" class="fw-medium">Message</th>
+                                                <th scope="col" class="fw-medium">Source</th>
+                                                <th scope="col" class="fw-medium" style="text-align: center;">Date & Time</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id="courseTable">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20 pt-15">
+                                    <span class="fs-15" id="showingText"></span>
+
+                                    <nav class="custom-pagination">
+                                        <ul class="pagination mb-0 justify-content-center" id="pagination"></ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="paid-tab-pane" role="tabpanel" aria-labelledby="paid-tab"
+                            tabindex="0">
+                            <div class="default-table-area mx-minus-1 table-courses">
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fw-medium">ID</th>
+                                                <th scope="col" class="fw-medium">Course Name</th>
+                                                <th scope="col" class="fw-medium">Category</th>
+                                                <th scope="col" class="fw-medium">Instructor</th>
+                                                <th scope="col" class="fw-medium">Enrolled Students</th>
+                                                <th scope="col" class="fw-medium">Start Date</th>
+                                                <th scope="col" class="fw-medium">End Date</th>
+                                                <th scope="col" class="fw-medium">Price</th>
+                                                <th scope="col" class="fw-medium">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-body">#186</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Web
+                                                        development basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Lynn Flinn</td>
+                                                <td class="text-body fs-16">140</td>
+                                                <td class="text-body fs-16">15 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$14.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#439</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Business
+                                                        finance</a>
+                                                </td>
+                                                <td class="text-body fs-16">Business</td>
+                                                <td class="text-secondary fs-16">Mark Rivera</td>
+                                                <td class="text-body fs-16">50</td>
+                                                <td class="text-body fs-16">01 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$20.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body rtl-pe">#752</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Advanced
+                                                        app development</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Chad Campos</td>
+                                                <td class="text-body fs-16">90</td>
+                                                <td class="text-body fs-16">15 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$22.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#258</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Introduction
+                                                        to python</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Andrew Allen</td>
+                                                <td class="text-body fs-16">120</td>
+                                                <td class="text-body fs-16">01 Aug, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$30.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#648</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Data
+                                                        science fundamentals</a>
+                                                </td>
+                                                <td class="text-body fs-16">Science</td>
+                                                <td class="text-secondary fs-16">Lea Lewis</td>
+                                                <td class="text-body fs-16">99</td>
+                                                <td class="text-body fs-16">15 Aug, 2025</td>
+                                                <td class="text-body fs-16">15 Dec, 2025</td>
+                                                <td class="text-body fs-16">$25.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#945</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Graphic
+                                                        design basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Arts & design</td>
+                                                <td class="text-secondary fs-16">Lillie Walker</td>
+                                                <td class="text-body fs-16">75</td>
+                                                <td class="text-body fs-16">01 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Nov, 2025</td>
+                                                <td class="text-body fs-16">$19.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20 pt-15">
+                                    <span class="fs-15">Showing 1 to 5 of 50 entries</span>
+
+                                    <nav class="custom-pagination" aria-label="Page navigation example">
+                                        <ul class="pagination mb-0 justify-content-center">
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Previous">
+                                                    <i class="material-symbols-outlined">west</i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link active">1</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">2</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">3</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Next">
+                                                    <i class="material-symbols-outlined">east</i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="free-tab-pane" role="tabpanel" aria-labelledby="free-tab"
+                            tabindex="0">
+                            <div class="default-table-area mx-minus-1 table-courses">
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fw-medium">ID</th>
+                                                <th scope="col" class="fw-medium">Course Name</th>
+                                                <th scope="col" class="fw-medium">Category</th>
+                                                <th scope="col" class="fw-medium">Instructor</th>
+                                                <th scope="col" class="fw-medium">Enrolled Students</th>
+                                                <th scope="col" class="fw-medium">Start Date</th>
+                                                <th scope="col" class="fw-medium">End Date</th>
+                                                <th scope="col" class="fw-medium">Price</th>
+                                                <th scope="col" class="fw-medium">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-body">#258</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Introduction
+                                                        to python</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Andrew Allen</td>
+                                                <td class="text-body fs-16">120</td>
+                                                <td class="text-body fs-16">01 Aug, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$30.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#648</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Data
+                                                        science fundamentals</a>
+                                                </td>
+                                                <td class="text-body fs-16">Science</td>
+                                                <td class="text-secondary fs-16">Lea Lewis</td>
+                                                <td class="text-body fs-16">99</td>
+                                                <td class="text-body fs-16">15 Aug, 2025</td>
+                                                <td class="text-body fs-16">15 Dec, 2025</td>
+                                                <td class="text-body fs-16">$25.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#945</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Graphic
+                                                        design basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Arts & design</td>
+                                                <td class="text-secondary fs-16">Lillie Walker</td>
+                                                <td class="text-body fs-16">75</td>
+                                                <td class="text-body fs-16">01 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Nov, 2025</td>
+                                                <td class="text-body fs-16">$19.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#186</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Web
+                                                        development basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Lynn Flinn</td>
+                                                <td class="text-body fs-16">140</td>
+                                                <td class="text-body fs-16">15 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$14.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#439</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Business
+                                                        finance</a>
+                                                </td>
+                                                <td class="text-body fs-16">Business</td>
+                                                <td class="text-secondary fs-16">Mark Rivera</td>
+                                                <td class="text-body fs-16">50</td>
+                                                <td class="text-body fs-16">01 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$20.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body rtl-pe">#752</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Advanced
+                                                        app development</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Chad Campos</td>
+                                                <td class="text-body fs-16">90</td>
+                                                <td class="text-body fs-16">15 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$22.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20 pt-15">
+                                    <span class="fs-15">Showing 1 to 5 of 50 entries</span>
+
+                                    <nav class="custom-pagination" aria-label="Page navigation example">
+                                        <ul class="pagination mb-0 justify-content-center">
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Previous">
+                                                    <i class="material-symbols-outlined">west</i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link active">1</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">2</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">3</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Next">
+                                                    <i class="material-symbols-outlined">east</i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="top-rated-tab-pane" role="tabpanel"
+                            aria-labelledby="top-rated-tab" tabindex="0">
+                            <div class="default-table-area mx-minus-1 table-courses">
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fw-medium">ID</th>
+                                                <th scope="col" class="fw-medium">Course Name</th>
+                                                <th scope="col" class="fw-medium">Category</th>
+                                                <th scope="col" class="fw-medium">Instructor</th>
+                                                <th scope="col" class="fw-medium">Enrolled Students</th>
+                                                <th scope="col" class="fw-medium">Start Date</th>
+                                                <th scope="col" class="fw-medium">End Date</th>
+                                                <th scope="col" class="fw-medium">Price</th>
+                                                <th scope="col" class="fw-medium">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-body">#186</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Web
+                                                        development basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Lynn Flinn</td>
+                                                <td class="text-body fs-16">140</td>
+                                                <td class="text-body fs-16">15 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$14.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#439</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Business
+                                                        finance</a>
+                                                </td>
+                                                <td class="text-body fs-16">Business</td>
+                                                <td class="text-secondary fs-16">Mark Rivera</td>
+                                                <td class="text-body fs-16">50</td>
+                                                <td class="text-body fs-16">01 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$20.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body rtl-pe">#752</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Advanced
+                                                        app development</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Chad Campos</td>
+                                                <td class="text-body fs-16">90</td>
+                                                <td class="text-body fs-16">15 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$22.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#258</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Introduction
+                                                        to python</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Andrew Allen</td>
+                                                <td class="text-body fs-16">120</td>
+                                                <td class="text-body fs-16">01 Aug, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$30.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#648</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Data
+                                                        science fundamentals</a>
+                                                </td>
+                                                <td class="text-body fs-16">Science</td>
+                                                <td class="text-secondary fs-16">Lea Lewis</td>
+                                                <td class="text-body fs-16">99</td>
+                                                <td class="text-body fs-16">15 Aug, 2025</td>
+                                                <td class="text-body fs-16">15 Dec, 2025</td>
+                                                <td class="text-body fs-16">$25.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#945</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Graphic
+                                                        design basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Arts & design</td>
+                                                <td class="text-secondary fs-16">Lillie Walker</td>
+                                                <td class="text-body fs-16">75</td>
+                                                <td class="text-body fs-16">01 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Nov, 2025</td>
+                                                <td class="text-body fs-16">$19.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20 pt-15">
+                                    <span class="fs-15">Showing 1 to 5 of 50 entries</span>
+
+                                    <nav class="custom-pagination" aria-label="Page navigation example">
+                                        <ul class="pagination mb-0 justify-content-center">
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Previous">
+                                                    <i class="material-symbols-outlined">west</i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link active">1</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">2</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">3</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Next">
+                                                    <i class="material-symbols-outlined">east</i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="best-seller-tab-pane" role="tabpanel"
+                            aria-labelledby="best-seller-tab" tabindex="0">
+                            <div class="default-table-area mx-minus-1 table-courses">
+                                <div class="table-responsive">
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="fw-medium">ID</th>
+                                                <th scope="col" class="fw-medium">Course Name</th>
+                                                <th scope="col" class="fw-medium">Category</th>
+                                                <th scope="col" class="fw-medium">Instructor</th>
+                                                <th scope="col" class="fw-medium">Enrolled Students</th>
+                                                <th scope="col" class="fw-medium">Start Date</th>
+                                                <th scope="col" class="fw-medium">End Date</th>
+                                                <th scope="col" class="fw-medium">Price</th>
+                                                <th scope="col" class="fw-medium">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-body">#258</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Introduction
+                                                        to python</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Andrew Allen</td>
+                                                <td class="text-body fs-16">120</td>
+                                                <td class="text-body fs-16">01 Aug, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$30.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#648</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Data
+                                                        science fundamentals</a>
+                                                </td>
+                                                <td class="text-body fs-16">Science</td>
+                                                <td class="text-secondary fs-16">Lea Lewis</td>
+                                                <td class="text-body fs-16">99</td>
+                                                <td class="text-body fs-16">15 Aug, 2025</td>
+                                                <td class="text-body fs-16">15 Dec, 2025</td>
+                                                <td class="text-body fs-16">$25.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#945</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Graphic
+                                                        design basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Arts & design</td>
+                                                <td class="text-secondary fs-16">Lillie Walker</td>
+                                                <td class="text-body fs-16">75</td>
+                                                <td class="text-body fs-16">01 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Nov, 2025</td>
+                                                <td class="text-body fs-16">$19.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#186</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Web
+                                                        development basics</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Lynn Flinn</td>
+                                                <td class="text-body fs-16">140</td>
+                                                <td class="text-body fs-16">15 Sep, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$14.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#439</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Business
+                                                        finance</a>
+                                                </td>
+                                                <td class="text-body fs-16">Business</td>
+                                                <td class="text-secondary fs-16">Mark Rivera</td>
+                                                <td class="text-body fs-16">50</td>
+                                                <td class="text-body fs-16">01 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$20.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-body">#752</td>
+                                                <td class="text-body">
+                                                    <a href="course-details.html"
+                                                        class="text-decoration-none fs-16 fw-medium text-secondary hover-text">Advanced
+                                                        app development</a>
+                                                </td>
+                                                <td class="text-body fs-16">Technology</td>
+                                                <td class="text-secondary fs-16">Chad Campos</td>
+                                                <td class="text-body fs-16">90</td>
+                                                <td class="text-body fs-16">15 Oct, 2025</td>
+                                                <td class="text-body fs-16">30 Dec, 2025</td>
+                                                <td class="text-body fs-16">$22.99</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-end" style="gap: 12px;">
+                                                        <button class="bg-transparent p-0 border-0"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="View">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-primary">visibility</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-success"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Edit">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">edit</i>
+                                                        </button>
+                                                        <button class="bg-transparent p-0 border-0 hover-text-danger"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Delete">
+                                                            <i
+                                                                class="material-symbols-outlined fs-16 fw-normal text-body">delete</i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center justify-content-sm-between align-items-center text-center flex-wrap gap-2 showing-wrap p-20 pt-15">
+                                    <span class="fs-15" id="showingText"></span>
+
+                                    <nav class="custom-pagination">
+                                        <ul class="pagination mb-0 justify-content-center" id="pagination"></ul>
+                                    </nav>
+
+                                    <nav class="custom-pagination" aria-label="Page navigation example">
+                                        <ul class="pagination mb-0 justify-content-center">
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Previous">
+                                                    <i class="material-symbols-outlined">west</i>
+                                                </button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link active">1</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">2</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link">3</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link icon" aria-label="Next">
+                                                    <i class="material-symbols-outlined">east</i>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="flex-grow-1"></div>
+
+            <!-- Start Footer Area -->
+            <footer class="footer-area bg-white text-center rounded-10 rounded-bottom-0">
+                <p class="fs-16 text-body">Copyright © 2025 All Rights Reserved. Langauagewala | Managed by <a
+                        href="https://marketingraisers.com/" target="_blank"
+                        class="text-decoration-none text-primary">Marketing Raisers</a></p>
+            </footer>
+            <!-- End Footer Area -->
+        </div>
+    </div>
+    
+    <script src="assets/js/auth.js"></script>
+    
+
+    <!-- Link Of JS File -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/sidebar-menu.js"></script>
+    <script src="assets/js/quill.min.js"></script>
+    <script src="assets/js/data-table.js"></script>
+    <script src="assets/js/prism.js"></script>
+    <script src="assets/js/clipboard.min.js"></script>
+    <script src="assets/js/simplebar.min.js"></script>
+    <script src="assets/js/apexcharts.min.js"></script>
+    <script src="assets/js/echarts.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/fullcalendar.main.js"></script>
+    <script src="assets/js/jsvectormap.min.js"></script>
+    <script src="assets/js/world-merc.js"></script>
+    <script src="assets/js/custom/apexcharts.js"></script>
+    <script src="assets/js/custom/echarts.js"></script>
+    <script src="assets/js/custom/maps.js"></script>
+    <script src="assets/js/custom/custom.js"></script>
+
+<script>
+let currentPage = 1;
+const limit = 8;
+
+function loadLeads(page = 1) {
+    currentPage = page;
+
+    fetch(`https://admin.languagewala.in/backend-php/get_leads.php?page=${page}`)
+        .then(res => res.json())
+        .then(data => {
+
+            let html = "";
+
+            if (data.leads.length === 0) {
+                html = `<tr><td colspan="8" class="text-center">No Data Found</td></tr>`;
+            } else {
+                data.leads.forEach(row => {
+                    html += `
+                    <tr>
+                        <td>${row.id}</td>
+                        <td>${row.name ?? '-'}</td>
+                        <td>${row.email ?? '-'}</td>
+                        <td>${row.phone ?? '-'}</td>
+                        <td>${row.course_title ?? '-'}</td>
+                        <td>${row.institute_name ?? '-'}</td>
+                        <td>${row.message ?? '-'}</td>
+                        <td>${row.source ?? '-'}</td>
+                        <td>${row.created_at}</td>
+                    </tr>`;
+                });
+            }
+
+            document.getElementById("courseTable").innerHTML = html;
+
+            // Showing text
+            let start = (page - 1) * limit + 1;
+            let end = Math.min(page * limit, data.total);
+            document.getElementById("showingText").innerText =
+                `Showing ${start} to ${end} of ${data.total} entries`;
+
+            renderPagination(data.total, page);
+        });
+}
+
+function renderPagination(total, page) {
+    let totalPages = Math.ceil(total / limit);
+    let html = "";
+
+    // ⬅ LEFT arrow (not on first page)
+    if (page > 1) {
+        html += `
+        <li class="page-item">
+            <button class="page-link" onclick="loadLeads(${page - 1})">←</button>
+        </li>`;
+    }
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+        html += `
+        <li class="page-item ${i === page ? 'active' : ''}">
+            <button class="page-link" onclick="loadLeads(${i})">${i}</button>
+        </li>`;
+    }
+
+    // ➡ RIGHT arrow (not on last page)
+    if (page < totalPages) {
+        html += `
+        <li class="page-item">
+            <button class="page-link" onclick="loadLeads(${page + 1})">→</button>
+        </li>`;
+    }
+
+    document.getElementById("pagination").innerHTML = html;
+}
+
+// Initial load
+loadLeads();
+</script>
+
+<script>
+function downloadCSV() {
+    const fromDate = document.getElementById("fromDate").value;
+    const toDate   = document.getElementById("toDate").value;
+    const limit    = document.getElementById("rowLimit").value;
+
+    let url = "https://admin.languagewala.in/backend-php/download_leads_csv.php?";
+    if (fromDate) url += `from=${fromDate}&`;
+    if (toDate)   url += `to=${toDate}&`;
+    if (limit)    url += `limit=${limit}`;
+
+    window.location.href = url;
+}
+</script>
+
+<script>
+async function loadProfile() {
+
+    let res = await fetch("https://admin.languagewala.in/backend-php/get_profile.php", {
+        credentials: "include"
+    });
+
+    let data = await res.json();
+    console.log(data);
+
+    if(data.error){
+        window.location.href = "sign-in.html";
+        return;
+    }
+
+    // Name logic
+    let fullName = "";
+
+    if(data.first_name && data.last_name){
+        fullName = data.first_name + " " + data.last_name;
+    } else {
+        fullName = data.username;
+    }
+
+    document.getElementById("profileName").innerText = fullName;
+    document.getElementById("profileRole").innerText = data.role.toUpperCase();
+}
+
+loadProfile();
+</script>
+
+
+</body>
+
+</html>
